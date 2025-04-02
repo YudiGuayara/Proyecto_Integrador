@@ -3,14 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenido</title>
+    <title>AquaBalance - Inicio</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="container">
-        <h2>Bienvenido al sistema</h2>
-        <p>Has iniciado sesión correctamente.</p>
-        <a href="index.html">Cerrar sesión</a>
-    </div>
+    <header>
+        <div class="logo">AquaBalance</div>
+        <nav>
+            <ul>
+                <li><a href="agregar_recurso.php">Agregar Recurso</a></li>
+                <li><a href="contaminantes.php">Contaminantes</a></li>
+                <li><a href="generar_alerta.php">Generar Alerta</a></li>
+            </ul>
+        </nav>
+        <div class="user-icon">
+            <i class="fas fa-user-circle"></i>
+            <span><?php echo htmlspecialchars($user['correo']); ?></span>
+            <ul class="dropdown">
+                <li><a href="perfil.php">Perfil</a></li>
+                <li><a href="logout.php">Cerrar Sesión</a></li>
+            </ul>
+        </div>
+    </header>
+    
+    <main>
+        <section class="welcome">
+            <h1>Bienvenido, <?php echo htmlspecialchars($user['correo']); ?> 👋</h1>
+            <p>Has iniciado sesión como <strong><?php echo htmlspecialchars($user['nombre_rol']); ?></strong>.</p>
+        </section>
+
+        <section class="info">
+            <h2>¿Qué es AquaBalance?</h2>
+            <p>AquaBalance es una plataforma diseñada para el seguimiento de la calidad del agua, gestión de recursos hídricos y generación de alertas ante posibles contaminaciones.</p>
+        </section>
+    </main>
+    
+    <footer>
+        <p>Contacto: contacto@aquabalance.com | Tel: +57 300 123 4567</p>
+        <p>&copy; 2025 AquaBalance. Todos los derechos reservados.</p>
+    </footer>
 </body>
 </html>

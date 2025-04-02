@@ -1,14 +1,14 @@
 <?php
-// Configuración de la base de datos
 $host = 'localhost';
-$dbname = 'proyecto_integrador';
+$dbname = 'Db_Usuarios';
 $username = 'root';
-$password = '123456789';
+$password = '';
 
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "✅ Conexión exitosa a la base de datos.";
 } catch (PDOException $e) {
-    die("Error de conexión: " . $e->getMessage());
+    echo "❌ Error de conexión: " . $e->getMessage();
 }
 ?>

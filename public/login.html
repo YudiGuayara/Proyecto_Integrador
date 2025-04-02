@@ -8,16 +8,23 @@
 </head>
 <body>
     <div class="container">
-        <img src="img/logotipo aquabalance.png" alt="Logo de la aplicación" class="logo">
+        <img src="img/logotipo_aquabalance.jpg" alt="Logo de la aplicación" class="logo">
         <h2>Iniciar Sesión</h2>
+
+        <!-- Mensajes de éxito o error -->
+        <?php if (isset($_GET['success'])): ?>
+            <p class="success-message">✅ ¡Registro exitoso! Ahora puedes iniciar sesión.</p>
+        <?php elseif (isset($_GET['error'])): ?>
+            <p class="error-message">⚠️ <?= htmlspecialchars($_GET['error']); ?></p>
+        <?php endif; ?>
+
         <form action="login.php" method="POST">
-            <input type="text" name="username" placeholder="Usuario" required>
+            <input type="email" name="email" placeholder="Correo Electrónico" required>
             <input type="password" name="password" placeholder="Contraseña" required>
-            <button type="submit">Iniciar Sesión</button> 
-        </form> 
+            <button type="submit">Iniciar Sesión</button>
+        </form>
     
         <p><a href="forgot_password.php">Olvidé mi contraseña</a> | <a href="register.html">Registrarse</a></p>
     </div>
-    <script src="script.js"></script>
 </body>
 </html>

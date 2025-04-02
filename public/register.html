@@ -8,15 +8,73 @@
 </head>
 <body>
     <div class="container">
-        <img src="img/logotipo aquabalance.png" alt="Logo de la aplicación" class="logo">
-        <h2>Registro</h2>
+        <img src="img/logotipo_aquabalance.jpg" alt="Logo de la aplicación" class="logo">
+        <h2>Registro de Usuario</h2>
         <form id="registerForm" action="register.php" method="POST">
-            <input type="text" name="username" placeholder="Usuario" required>
-            <input type="email" name="email" placeholder="Correo electrónico" required>
-            <input type="password" name="password" placeholder="Contraseña" required>
+            <div class="form-group">
+                <input type="text" name="primer_nombre" placeholder="Primer Nombre" required>
+                <input type="text" name="segundo_nombre" placeholder="Segundo Nombre (opcional)">
+            </div>
+            
+            <div class="form-group">
+                <input type="text" name="primer_apellido" placeholder="Primer Apellido" required>
+                <input type="text" name="segundo_apellido" placeholder="Segundo Apellido">
+            </div>
+        
+            <select name="tipo_documento" required>
+                <option value="">Seleccione Tipo de Documento</option>
+                <option value="Cédula de ciudadanía">Cédula de ciudadanía</option>
+                <option value="Tarjeta de extranjería">Tarjeta de extranjería</option>
+                <option value="Pasaporte">Pasaporte</option>
+            </select>
+        
+            <div class="form-group">
+                <input type="text" name="numero_documento" placeholder="Número de Documento" required>
+            </div>
+
+            <div class="form-group">
+                <label for="fecha_expedicion">📅 Fecha de Expedición</label>
+                <input type="date" id="fecha_expedicion" name="fecha_expedicion" required>
+            </div>
+        
+            <div class="form-group">
+                <input type="tel" name="celular" placeholder="Número de Celular">
+                <input type="email" name="email" placeholder="Correo Electrónico" required>
+            </div>
+        
+            <div class="form-group">
+                <input type="password" name="password" placeholder="Contraseña" required>
+                <input type="password" name="password_confirm" placeholder="Confirmar Contraseña" required>
+            </div>
+
+            <select name="rol" required>
+                <option value="">Seleccione un Rol</option>
+                <option value="Administrador">Administrador</option>
+                <option value="Usuario">Usuario</option> 
+            </select>
+            
+            
+        
             <button type="submit">Registrarse</button>
         </form>
+        
         <p>¿Ya tienes una cuenta? <a href="login.html">Iniciar sesión</a></p>
     </div>
+
+    <script>
+        // Establecer la fecha actual en el campo de fecha de expedición
+        document.getElementById('fecha_expedicion').valueAsDate = new Date();
+
+        // Validación de contraseñas
+        document.getElementById("registerForm").addEventListener("submit", function(event) {
+            let password = document.querySelector("[name='password']").value;
+            let confirmPassword = document.querySelector("[name='password_confirm']").value;
+
+            if (password !== confirmPassword) {
+                event.preventDefault();
+                alert("Las contraseñas no coinciden.");
+            }
+        });
+    </script>
 </body>
 </html>

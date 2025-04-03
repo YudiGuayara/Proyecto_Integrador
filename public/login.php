@@ -9,14 +9,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($email) && !empty($password)) {
         try {
             global $pdo;
-            $stmt = $pdo->prepare("SELECT id, correo, contraseña FROM Usuarios WHERE correo = :email");
+            $stmt = $pdo->prepare("SELECT id_perfil, correo, contraseña FROM Usuarios WHERE correo = :email");
             $stmt->bindParam(':email', $email, PDO::PARAM_STR);
             $stmt->execute();
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($user && password_verify($password, $user['contraseña'])) {
                 // Guardar datos del usuario en sesión
-                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['user_id'] = $user['id_perfil'];
                 $_SESSION['user_email'] = $user['correo'];
 
                 // Redirigir al dashboard
@@ -36,4 +36,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-
